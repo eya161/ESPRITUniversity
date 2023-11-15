@@ -1,1 +1,64 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container" style="margin-left: 10px;">
+        <img src = "../../../assets/svg/university-svgrepo-com.svg" alt="University SVG" width="40px" height="40px" />
+        <a class="navbar-brand" href="#">ESPRIT University Student</a>
+        <button (click)="toggleDisplayDivIf()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div [ngClass]="{'collapse': !isShowDivIf, 'navbar-collapse': true, 'responsive__active': isShowDivIf, 'responsive__inactive': !isShowDivIf}"
+            id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li (click)="toggleDisplayDivIf()" class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown" [ngClass]="{ show: isDropdownOpen1 }">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(1)">Université</a>
+                    <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Université</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Ville</a>
+                    </div>
+                </li>
+                <li (click)="toggleDisplayDivIf()" class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="#">Département</a>
+                </li>
+                <li (click)="toggleDisplayDivIf()" class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="#">Classe</a>
+                </li>
+                <li class="nav-item dropdown" [ngClass]="{ show: isDropdownOpen2 }">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(2)">Equipe</a>
+                    <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Equipe</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Détails Equipe</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" [ngClass]="{ show: isDropdownOpen3 }">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(3)">Projet</a>
+                    <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Projet</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Détails Projet</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" [ngClass]="{ show: isDropdownOpen4 }">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(4)">Foyer</a>
+                    <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Foyer</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Bloc</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Chambre</a>
+                    </div>
+                </li>                                                           
+            </ul>
+        </div>
+    </div>
+</nav>
