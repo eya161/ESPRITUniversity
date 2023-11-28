@@ -9,6 +9,7 @@ import { AddFoyerComponent } from './core/manage-foyer/add-foyer/add-foyer.compo
 import { UpdateFoyerComponent } from './core/manage-foyer/update-foyer/update-foyer.component';
 import { DeleteFoyerComponent } from './core/manage-foyer/delete-foyer/delete-foyer.component';
 import { ListFoyerComponent } from './core/manage-foyer/list-foyer/list-foyer.component';
+import { AddProjetComponent } from './core/manageProjet/add-projet/add-projet.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ListFoyerComponent } from './core/manage-foyer/list-foyer/list-foyer.co
     AddFoyerComponent,
     UpdateFoyerComponent,
     DeleteFoyerComponent,
-    ListFoyerComponent
+    ListFoyerComponent,
+    AddProjetComponent
   ],
   imports: [
     BrowserModule,
