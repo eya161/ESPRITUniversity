@@ -1,0 +1,80 @@
+<div class="dialog-content">
+<div class="container">
+    <div class="main-body">
+        <div class="card">
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Username</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" class="form-control" [(ngModel)]="p.username">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">First Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" class="form-control" [(ngModel)]="p.prenomUser" >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Last Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" class="form-control" [(ngModel)]="p.nomUser" >
+                    </div>
+                </div>
+                <!-- <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" class="form-control" value={{userup.email}}>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Password</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="password" class="form-control" value={{userup.password}}>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Role</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" class="form-control" value={{userup.role}}>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">CIN</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" class="form-control" value={{userup.cin}}>
+                    </div>
+                </div> -->
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">Birthdate</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="date" class="form-control" [(ngModel)]="p.dateNaissance"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="button" class="btn btn-dark px-4" (click)="saveChanges()" value="Save Changes">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

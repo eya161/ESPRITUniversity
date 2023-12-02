@@ -3,6 +3,7 @@ import { User } from 'src/app/model/user';
 import { UserService } from '../user.service';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -17,9 +18,28 @@ export class SignupComponent {
   username: string = '';
   password: string = '';
   role: string = 'ETUDIANT';
-  constructor(private userservice:AuthenticationService, private router:Router){
+  constructor(private userservice:AuthenticationService, private router:Router, private formbuilder:FormBuilder){
 
   }
+  fb = this.formbuilder.group({
+    nomUserfb: ['', [Validators.required, Validators.minLength(4)]],
+    prenomUserfb: ['', [Validators.required, Validators.minLength(3)]],
+    cinfb: ['', [Validators.required, Validators.pattern("^[0-9]{8}$")]],
+    emailfb: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(
+          '^[a-zA-Z0-9._-]+@(esprit\\.tn|gmail\\.com)$'
+        )
+      ]
+    ],    
+    usernamefb: ['', [Validators.required, Validators.minLength(3)]],
+    passwordfb: [
+      '',
+      [Validators.required, Validators.pattern('^[a-zA-Z0-9]{8,}?')]
+    ]
+  });
   onSubmit() {
     this.userservice.register(this.nomUser, this.prenomUser, this.cin, this.email, this.username, this.password, "ETUDIANT")
       .subscribe(

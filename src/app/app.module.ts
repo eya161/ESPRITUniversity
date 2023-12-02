@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar'; 
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input'; 
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { AddUniversiteComponent } from './core/manage-university/add-universite/add-universite.component';
@@ -10,11 +15,20 @@ import { UpdateFoyerComponent } from './core/manage-foyer/update-foyer/update-fo
 import { DeleteFoyerComponent } from './core/manage-foyer/delete-foyer/delete-foyer.component';
 import { ListFoyerComponent } from './core/manage-foyer/list-foyer/list-foyer.component';
 import { LoginComponent } from './core/manage-user/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './core/manage-user/signup/signup.component';
 import { ForgetPasswordEmailInterfaceComponent } from './core/manage-user/forget-password-email-interface/forget-password-email-interface.component';
 import { ForgetPasswordInterfaceComponent } from './core/manage-user/forget-password-interface/forget-password-interface.component';
+import { ErrorComponent } from './shared/error/error.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { ProfileComponent } from './core/manage-user/profile/profile.component';
+import { LayoutComponent } from './shared/layout/layout.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UpdateUserComponent } from './core/manage-user/update-user/update-user.component';
+import { UpdatePasswordUserComponent } from './core/manage-user/update-password-user/update-password-user.component';
+import { UserModule } from './core/manage-user/user/user.module';
 
 @NgModule({
   declarations: [
@@ -28,15 +42,31 @@ import { ForgetPasswordInterfaceComponent } from './core/manage-user/forget-pass
     LoginComponent,
     SignupComponent,
     ForgetPasswordEmailInterfaceComponent,
-    ForgetPasswordInterfaceComponent
+    ForgetPasswordInterfaceComponent,
+    ErrorComponent,
+    NotFoundComponent,
+    ProfileComponent,
+    LayoutComponent,
+    SidebarComponent,
+    UpdateUserComponent,
+    UpdatePasswordUserComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,  
     HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule, 
+    MatInputModule,
+    UserModule 
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

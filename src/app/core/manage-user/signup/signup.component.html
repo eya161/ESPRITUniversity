@@ -3,30 +3,36 @@
         <div class="signup-content">
             <div class="signup-form">
                 <h2 class="form-title">Sign up</h2>
-                <form method="POST" class="register-form" id="register-form" (ngSubmit)="onSubmit()" >
+                <form method="POST" class="register-form" id="register-form" (ngSubmit)="onSubmit()"  [formGroup]="fb" >
                     <div class="form-group">
                         <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="username" id="username" placeholder="Your Username" [(ngModel)]="username"/>
+                        <input type="text" name="username" id="username" placeholder="Your Username" [(ngModel)]="username" formControlName="usernamefb"/>
+                        <app-error [err]="fb.get('usernamefb')" *ngIf="fb.get('usernamefb')?.touched"></app-error>
                     </div>
                     <div class="form-group">
                         <label for="email"><i class="zmdi zmdi-email"></i></label>
-                        <input type="email" name="email" id="email" placeholder="Your Email" [(ngModel)]="email"/>
+                        <input type="email" name="email" id="email" placeholder="Your Email" [(ngModel)]="email" formControlName="emailfb"/>
+                        <app-error [err]="fb.get('emailfb')" *ngIf="fb.get('emailfb')?.touched"></app-error>
                     </div>
                     <div class="form-group">
                         <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                        <input type="password" name="pass" id="pass" placeholder="Password" [(ngModel)]="password"/>
+                        <input type="password" name="pass" id="pass" placeholder="Password" [(ngModel)]="password" formControlName="passwordfb"/>
+                        <app-error [err]="fb.get('passwordfb')" *ngIf="fb.get('passwordfb')?.touched"></app-error>
                     </div>
                     <div class="form-group">
                         <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="name" id="name" placeholder="Your FirstName" [(ngModel)]="prenomUser"/>
+                        <input type="text" name="name" id="name" placeholder="Your FirstName" [(ngModel)]="prenomUser" formControlName="prenomUserfb"/>
+                        <app-error [err]="fb.get('prenomUserfb')" *ngIf="fb.get('prenomUserfb')?.touched"></app-error>
                     </div>
                     <div class="form-group">
                         <label for="lastname"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="lastname" id="lastname" placeholder="Your LastName" [(ngModel)]="nomUser"/>
+                        <input type="text" name="lastname" id="lastname" placeholder="Your LastName" [(ngModel)]="nomUser" formControlName="nomUserfb"/>
+                        <app-error [err]="fb.get('nomUserfb')" *ngIf="fb.get('nomUserfb')?.touched"></app-error>
                     </div>
                     <div class="form-group">
                         <label for="cin"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="cin" id="cin" placeholder="Your CIN" [(ngModel)]="cin" [value]="cin !== 0 ?'': cin" />
+                        <input type="text" name="cin" id="cin" placeholder="Your CIN" [(ngModel)]="cin" formControlName="cinfb"/>
+                        <app-error [err]="fb.get('cinfb')" *ngIf="fb.get('cinfb')?.touched"></app-error>
                     </div>                    
                     <!-- <div class="form-group">
                         <label for="birthdate"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -37,7 +43,7 @@
                         <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                     </div>
                     <div class="form-group form-button">
-                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register" [disabled]="fb.invalid || fb.pristine"/>
                     </div>
                 </form>
             </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-forget-password-interface',
@@ -10,8 +11,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ForgetPasswordInterfaceComponent implements OnInit {
   token: any;
   newPassword: any;
+  confirmPassword: any;
 
-  constructor(private userService: AuthenticationService, private route: ActivatedRoute, private router:Router) { }
+  constructor(private userService: AuthenticationService, private route: ActivatedRoute, private router:Router, private formbuilder:FormBuilder) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -20,6 +22,15 @@ export class ForgetPasswordInterfaceComponent implements OnInit {
       console.log(this.token);
     });
   }
+  // fb = this.formbuilder.group({
+  //   nyour_newPassword: ['', [Validators.required], Validators.pattern('^[a-zA-Z0-9]{8,}?')],
+  //   your_confirmPassword: ['', [Validators.required], Validators.pattern('^[a-zA-Z0-9]{8,}?')]
+  // }, {
+  //   validator: this.passwordMatchValidator
+  // });
+  // passwordMatchValidator(g: FormGroup) {
+  //   return g.get('your_newPassword')?.value === g.get('your_confirmPassword')?.value ? null : { mismatch: true };
+  // }
 
   onSubmit() {
     this.userService.resetPassword(this.token, this.newPassword)

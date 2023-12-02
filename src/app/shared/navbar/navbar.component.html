@@ -1,21 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container" style="margin-left: 10px;">
-        <img src = "../../../assets/svg/university-svgrepo-com.svg" alt="University SVG" width="40px" height="40px" />
-        <a class="navbar-brand" href="#">ESPRIT University Student</a>
+        <img src = "../../../assets/images/logooo-removebg-preview.png" alt="University SVG" width="270px" height="50px" />
         <button (click)="toggleDisplayDivIf()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div [ngClass]="{'collapse': !isShowDivIf, 'navbar-collapse': true, 'responsive__active': isShowDivIf, 'responsive__inactive': !isShowDivIf}"
-            id="navbarResponsive">
+            id="navbarResponsive" class="offset-md-5 offset-s-3">
             <ul class="navbar-nav ml-auto">
                 <li (click)="toggleDisplayDivIf()" class="nav-item" routerLinkActive="active">
                     <a class="nav-link" routerLink="#">Home
-                        <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown" [ngClass]="{ show: isDropdownOpen1 }">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                         aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(1)">Université</a>
                     <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Université</a>
@@ -30,7 +28,7 @@
                     <a class="nav-link" routerLink="#">Classe</a>
                 </li>
                 <li class="nav-item dropdown" [ngClass]="{ show: isDropdownOpen2 }">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                         aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(2)">Equipe</a>
                     <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Equipe</a>
@@ -39,7 +37,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown" [ngClass]="{ show: isDropdownOpen3 }">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                         aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(3)">Projet</a>
                     <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Projet</a>
@@ -48,7 +46,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown" [ngClass]="{ show: isDropdownOpen4 }">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                         aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(4)">Foyer</a>
                     <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Foyer</a>
@@ -57,8 +55,41 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Chambre</a>
                     </div>
-                </li>                                                           
+                </li>  
+                <li class="nav-item ">
+                    <a class="nav-link" (click)="logout()">Logout</a>
+                </li>       
+                <li class="nav-item offset-md-4">
+                    <a class="nav-link" href="/profile">
+                        <div class="avatar">
+                            <img src="../../../assets/svg/user-svgrepo-com.svg" alt="User Avatar" width="30px" height="30px">
+                        </div>
+                    </a>
+                </li>                                                 
             </ul>
+        </div>
+        <div>
+            
         </div>
     </div>
 </nav>
+<!-- </div>
+        <div class="offset-md-3">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">
+                        <img src="../../../assets/svg/user-svgrepo-com.svg" alt="User Avatar" width="30px" height="30px"
+                            style="border-radius: 50%;">
+                    </a>
+                </li>
+                <li class="nav-item mt-1">
+                    <a class="nav-link" routerLink="#">Logout</a>
+                </li>                                            
+            </ul>
+        </div>
+        <button (click)="toggleDisplayDivIf()" class="navbar-toggler" style="float: inline-end;" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav> -->

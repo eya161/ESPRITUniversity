@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/core/manage-user/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
-  constructor() { }
+  constructor(private authService:AuthenticationService, private router:Router) { }
 
   isShowDivIf = false;
   isDropdownOpen1: boolean = false;
@@ -41,6 +43,10 @@ export class NavbarComponent implements OnInit{
     }else{
       this.isDropdownOpen4=false;
     }
+  }
+  logout(){
+    this.authService.logout();
+    
   }
   
 }

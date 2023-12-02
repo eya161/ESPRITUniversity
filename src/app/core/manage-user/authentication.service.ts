@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { User } from 'src/app/model/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class AuthenticationService {
   isAuthenticated = false; // Add isAuthenticated property
   helper = new JwtHelperService();
   decodedToken: any; 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router:Router) {}
 
   login(email: string, password: string): Observable<any> {
     const body = { email, password };
@@ -24,7 +25,7 @@ export class AuthenticationService {
       .pipe(
         tap((token) => {
           this.handleAuthentication(token);
-          this.decodedToken = this.helper.decodeToken(token); // Decode the received token
+          this.decodedToken = this.helper.decodeToken(token); 
           console.log(this.decodedToken);
         }),
         catchError((error) => throwError(error))
@@ -33,17 +34,20 @@ export class AuthenticationService {
 
   private handleAuthentication(token: string): void {
     if (token) {
-      // Save the token in session storage
-      sessionStorage.setItem('authToken', token);
-      this.isAuthenticated = true; // Update isAuthenticated upon successful login
-
-      // Other handling logic if needed
+      localStorage.setItem('authToken', token);
+      this.decodedToken = this.helper.decodeToken(token); 
+      console.log('Decoded Token:', this.decodedToken); 
+      localStorage.setItem('userProfile', JSON.stringify(this.decodedToken)); 
+      this.isAuthenticated = true; 
     } else {
-      this.isAuthenticated = false; // Set isAuthenticated to false on authentication failure
-      // Handle authentication failure, e.g., display an error message
+      this.isAuthenticated = false; 
       console.error('Authentication failed');
     }
   }
+  getUserProfileFromLocalStorage(): any {
+    const userProfile = localStorage.getItem('userProfile');
+    return userProfile ? JSON.parse(userProfile) : null;
+  }  
 
   register(nomUser: string, prenomUser: string, cin: number, email: string, username: string, password: string, role: string): Observable<any> {
     const body = { nomUser, prenomUser, cin, email, username, password, role };
@@ -75,9 +79,25 @@ export class AuthenticationService {
       catchError(error => throwError(error))
     );
   }
+  updatePassword(email: string, oldPassword: string, newPassword: string) {
+    const body = { email, oldPassword, newPassword };
+
+    return this.http.post<any>(`${this.apiUrl}register/change-password`, body, { responseType: 'text' as 'json' })
+      .pipe(
+        tap(response => {
+          console.log('Password change successful:', response);
+        }),
+        catchError(error => {
+          alert('Password change error:'+error);
+          return throwError(error);
+        })
+      );
+  }
   logout(): void {
-    // Remove the authentication token from session storage
-    sessionStorage.removeItem('authToken');
-    this.isAuthenticated = false; // Update isAuthenticated on logout
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userProfile');
+    this.isAuthenticated = false; 
+    this.router.navigate(['/login'])
+
   }
 }
