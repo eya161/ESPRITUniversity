@@ -1,0 +1,29 @@
+/* Include this in your component's CSS or global styles */
+.dropdown-menu {
+  display: none;
+  background-color: rgb(33, 37, 41);
+  color: white;
+}
+
+.show .dropdown-menu {
+  display: block;
+}
+
+.custom-dropdown .dropdown-item {
+  background-color: rgb(33, 37, 41) !important;
+  color: rgb(155 157 158) !important;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

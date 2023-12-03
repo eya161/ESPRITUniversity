@@ -1,0 +1,45 @@
+<div style="align-items: center; ">
+    <form [formGroup]="addDepartment" (ngSubmit)="save()" #f="ngForm">
+       <!-- <div class="alert alert-success" role="alert">
+            A simple success alert—check it out!
+          </div>-->
+    
+          <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="message">
+            <strong>Department </strong> added successfully
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"  (click)="removeMessage()"></button>
+          </div>
+    
+          <br>
+    <label for="select" class="form-label" >University </label>
+           <select name="select" id="" formControlName="Universite" style="margin-left: 15px;">
+                <option *ngFor="let uni of university" value="{{uni.idUniversite}}">{{uni.nomUniversite}} - {{uni.adresse}}</option>
+             </select>
+        <br>
+    
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name Departement</label>
+          <input type="text" class="form-control" placeholder="Enter Name" formControlName="nomDepartment">
+        
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="nomDepartment && nomDepartment.hasError('required') && nomDepartment.touched">
+          Name Departement is required
+        </div>
+    
+        <div class="alert alert-danger" role="alert" *ngIf="nomDepartment && nomDepartment.hasError('pattern') && nomDepartment.touched">
+          Name Departement shouldn't start with number.
+        </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Number floor</label>
+            <input type="number" class="form-control" placeholder="Enter number floor" formControlName="nombreEtage">
+          
+          </div>
+    
+          <div class="alert alert-danger" role="alert" *ngIf="nombreEtage && nombreEtage.invalid && nombreEtage.touched">
+            Floor number is required
+          </div>
+        
+       
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid && f.invalid ">Submit</button>
+      </form>
+    
+    </div>

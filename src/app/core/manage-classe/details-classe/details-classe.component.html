@@ -1,0 +1,23 @@
+
+
+<div *ngIf="classroom" class="container mt-4">
+    <h2>{{ classroom.nomClasse }} Details</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Capacity:</strong> {{ classroom.capacity }}</p>
+      
+        <p><strong>Floor:</strong> {{ classroom.etage }}</p>
+     
+        <p><strong>Available:</strong> {{ classroom.disponibility ? 'Yes' : 'No' }}</p>
+      </div>
+      <div class="col-md-6">
+        <p><strong>Department:</strong> {{ classroom.department.nomDepartment }} - <strong>Classe:</strong> {{ classroom.department.nombreClasses }}</p>
+      
+        <hr>
+        <p><strong>University:</strong> {{ classroom.department.universite.nomUniversite }} - <strong>Adresse:</strong> {{ classroom.department.universite.adresse }}</p>
+      </div>
+
+      
+    </div>
+    <button (click)="onCloseDetails()" class="btn btn-primary">Close Details</button>
+  </div>

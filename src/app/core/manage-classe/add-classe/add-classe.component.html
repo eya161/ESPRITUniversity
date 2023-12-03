@@ -1,0 +1,86 @@
+<div class="container">
+    <div style="align-items: center; ">
+        <form [formGroup]="addClasse" (ngSubmit)="save()" #f="ngForm">
+           <!-- <div class="alert alert-success" role="alert">
+                A simple success alert—check it out!
+              </div>-->
+        
+              <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="message">
+                <strong>Classe </strong> added successfully
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"  (click)="removeMessage()"></button>
+              </div>
+        
+        
+    <br>
+    <label for="select" class="form-label" >Departement </label>
+           <select name="select" id="" formControlName="Departement" style="margin-left: 15px;">
+                <option *ngFor="let dep of department" value="{{dep.idDepartment}}">{{dep.universite.nomUniversite}} - {{dep.nomDepartment}}</option>
+             </select>
+        <br>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Classe Name</label>
+              <input type="text" class="form-control" placeholder="Enter Name" formControlName="classeName">
+            
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="classeName && classeName.hasError('required') && classeName.touched">
+                Classe Name is required
+              </div>
+    
+              <div class="alert alert-danger" role="alert" *ngIf="classeName && classeName.hasError('pattern') && classeName.touched">
+                Classe Name shouldn't start with number.
+              </div>
+    
+              <div class="alert alert-danger" role="alert" *ngIf="classeName && classeName.hasError('minlength') && classeName.touched">
+                Classe Name should be Bloc-000 or 3 Caracters.
+              </div>
+    
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Capacity</label>
+                <input type="number" class="form-control" placeholder="Enter number floor" formControlName="capacity">
+              
+              </div>
+        
+              
+              <div class="alert alert-danger" role="alert" *ngIf="capacity && capacity.hasError('required') && capacity.touched">
+                capacity is required
+              </div>
+             
+    
+              <div class="alert alert-danger" role="alert" *ngIf="capacity && capacity.hasError('pattern') && capacity.touched">
+                Capacity must be a 4-digit number.
+              </div>
+    
+    
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Etage</label>
+                <input type="number" class="form-control" placeholder="Enter number floor" formControlName="etage">
+              
+              </div>
+        
+              <div class="alert alert-danger" role="alert" *ngIf="etage && etage.hasError('required') && etage.touched">
+                etage is required
+              </div>
+              <div class="alert alert-danger" role="alert" *ngIf="etage && etage.hasError('max') && etage.touched">
+                Max Floor is 99.
+              </div>
+    
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Disponibility   </label>
+                
+                <select name="" id="" formControlName="disponibility">
+                        <option value="true">Disponible</option>
+                        <option value="false">Non Disponible</option>
+                </select>
+              
+              </div>
+        
+              <div class="alert alert-danger" role="alert" *ngIf="disponibility && disponibility.invalid && disponibility.touched">
+                disponibility is required
+              </div>
+            
+           
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid && f.invalid ">Submit</button>
+          </form>
+        
+        </div>
+      </div>
