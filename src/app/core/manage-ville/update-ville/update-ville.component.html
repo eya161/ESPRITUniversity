@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- Autres balises meta et liens CSS si nécessaires -->
+</head>
+<body >
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card mt-5">
+            <div class="card-header card-header-danger text-center">
+              <h2>Mettre à jour la ville</h2>
+              <p>Veuillez remplir le formulaire suivant</p>
+            </div>
+            <div class="card-body">
+            <!-- <form [formGroup]="updateVille" (ngSubmit)="editVille()">
+
+                University Name input
+                <label class="form-label" for="form3Example3">Nom de la ville
+                </label>
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example3" name="nom" class="form-control" required minlength="4" pattern="[a-zA-Z]*"
+                  uk-icon="icon: home" formControlName="nom"/>
+
+                  <div
+                  class="alert alert-danger"
+                  *ngIf="updateVille.get('nom')?.touched &&
+                  updateVille.get('nom')?.invalid &&
+                  !updateVille.get('nom')?.hasError('minlength')&&
+                  !updateVille.get('nom')?.hasError('pattern')"
+         >
+         Nom est obligatoire.
+         </div>
+         <div
+           class="alert alert-danger"
+           *ngIf="
+                  updateVille.get('nom')?.hasError('minlength')"
+         >
+         Nom doit comporter au moins 4 caractères.
+         </div>
+         <div class="alert alert-danger"
+         *ngIf="
+                updateVille.get('nom')?.hasError('pattern')">
+        Nom doit contenir uniquement des lettres.
+    </div>
+
+
+
+
+
+                </div>
+
+                Address input
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3"> Adresse </label>
+                  <input type="text" id="form3Example3" class="form-control"   minlength="10" name="addresse"  required uk-icon="icon: location" formControlName="addresse"/>
+                  <div
+                  class="alert alert-danger"
+                  *ngIf="updateVille.get('addresse')?.touched &&
+                  updateVille.get('addresse')?.invalid &&
+                  !updateVille.get('addresse')?.hasError('minlength')"
+         >
+         L'adresse est obligatoire.
+        </div>
+         <div
+           class="alert alert-danger"
+           *ngIf="updateVille.get('addresse')?.touched &&
+                  updateVille.get('addresse')?.hasError('minlength')"
+         >
+         L'adresse doit comporter au moins 10 caractères.
+        </div>
+
+
+                </div>
+
+                 Update button
+                <div class="d-flex justify-content-start mt-4">
+
+                <button type="submit" class="btn btn-primary w-20 mx-2">Update</button>
+
+                 Return button
+                <button type="button" class="btn btn-primary w-20 mx-2" [routerLink]="['/ville/show/']">
+                  Retourner
+                </button>
+</div>
+              </form>-->
+              <form #updateVilleForm="ngForm" (ngSubmit)="editVille()">
+                <!-- Nom de la ville input -->
+                <div class="form-group">
+                  <label for="nom">Nom de la ville</label>
+                  <input type="text" id="nom" name="nom" class="form-control" [(ngModel)]="ville.nom" required minlength="4" pattern="[a-zA-Z]*" uk-icon="icon: home" #nom="ngModel">
+
+                  <div *ngIf="nom.touched && nom.invalid && !nom.hasError('minlength') && !nom.hasError('pattern')" class="alert alert-danger">
+                    Nom est obligatoire.
+                  </div>
+                  <div *ngIf="nom.hasError('minlength')" class="alert alert-danger">
+                    Nom doit comporter au moins 4 caractères.
+                  </div>
+                  <div *ngIf="nom.hasError('pattern')" class="alert alert-danger">
+                    Nom doit contenir uniquement des lettres.
+                  </div>
+                </div>
+
+                <!-- Adresse input -->
+                <div class="form-group">
+                  <label for="addresse">Adresse</label>
+                  <input type="text" id="addresse" name="addresse" class="form-control" minlength="10" required [(ngModel)]="ville.addresse" uk-icon="icon: location" #addresse="ngModel">
+
+                  <div *ngIf="addresse.touched && addresse.invalid && !addresse.hasError('minlength')" class="alert alert-danger">
+                    L'adresse est obligatoire.
+                  </div>
+                  <div *ngIf="addresse.touched && addresse.hasError('minlength')" class="alert alert-danger">
+                    L'adresse doit comporter au moins 10 caractères.
+                  </div>
+                </div>
+
+                <!-- Update and Return buttons -->
+                <div class="d-flex justify-content-start mt-4">
+                  <button type="submit" class="btn btn-primary w-20 mx-2" [disabled]="updateVilleForm.invalid">Update</button>
+                  <button type="button" class="btn btn-primary w-20 mx-2" [routerLink]="['/ville/show/']">Retourner</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

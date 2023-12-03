@@ -1,1 +1,154 @@
-<p>add-universite works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <!-- Autres balises meta et liens CSS si nécessaires -->
+</head>
+<body>
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        
+        <div class="col-md-8">
+          <div class="card mt-5">
+            <div class="card-header card-header-danger text-center">
+              <h2>ajouter une université</h2>
+              <p>Veuillez remplir le formulaire suivant</p>
+            </div>
+            <div class="card-body">
+              <!-- [(ngModel)]="universite.nomUniversite" (ngSubmit)="onSubmit(univForm)" #univForm="ngForm" enctype="multipart/form-data"///-->
+              <form #f="ngForm" (ngSubmit)="onSubmit(univForm)" #univForm="ngForm" enctype="multipart/form-data" >
+
+
+                <!-- University Name input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3">Nom de l'université</label>
+                                                   <!-- [(ngModel)]="universite.nomUniversite "-->
+
+                  <input type="text" id="form3Example3" [(ngModel)]="universite.nomUniversite " name="nomUniversite" class="form-control" required minlength="4" pattern="[a-zA-Z]*" [ngModel]  #nomUniversite="ngModel"placeholder="Entrez le nom de l'université"
+                  uk-icon="icon: home"/>
+                  <div  *ngIf="nomUniversite.invalid && nomUniversite.touched" >
+                    <div class="alert alert-danger" *ngIf="nomUniversite.errors?.['required']" >
+                      Nom est obligatoire.
+                    </div>
+
+                              <div class="alert alert-danger" *ngIf="nomUniversite.errors?.['minlength']" >
+                                Nom doit comporter au moins 4 caractères.                                  </div>
+
+
+                              <div class="alert alert-danger" *ngIf="nomUniversite.errors?.['pattern']" >
+                                Nom doit contenir uniquement des lettres.
+                              </div>
+
+
+                </div>
+              </div>
+                <!-- Adress input -->
+                <div class="form-outline mb-4">
+                                 <!-- [(ngModel)]="universite.adresse"-->
+
+                  <label class="form-label" for="form3Example3"> Adresse </label>
+                  <input type="text" id="form3Example3" class="form-control" [(ngModel)]="universite.adresse"  minlength="10" name="adresse" [ngModel]  #adresse="ngModel" required uk-icon="icon: location" placeholder="Entrez l'adresse"/>
+                  <div *ngIf="adresse.invalid && adresse.touched" >
+
+                    <div class="alert alert-danger" *ngIf="adresse.errors?.['required']" >
+                      Adresse est obligatoire.
+                    </div>
+
+                              <div class="alert alert-danger"  *ngIf="adresse.errors?.['minlength']" >
+                                Adresse  doit comporter au moins 10 caractères.
+                              </div>
+
+                </div>
+              </div>
+              <!-- mail input -->
+               <!-- [(ngModel)]="universite.mail"-->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3"> Mail </label>
+                <input type="text" id="form3Example3" class="form-control" [(ngModel)]="universite.mail"  minlength="8" name="mail" [ngModel]  #mail="ngModel" required uk-icon="icon: location" placeholder="Entrez mail"/>
+                <div *ngIf="mail.invalid && mail.touched" >
+
+                  <div class="alert alert-danger" *ngIf="mail.errors?.['required']" >
+                    Email est obligatoire.
+                  </div>
+                  <div class="alert alert-danger" *ngIf="!mail.errors?.['email'] && (!mail.value.includes('@') || mail.value.includes('!') || mail.value.includes('#') || mail.value.includes('?')) ">
+                    L'email doit contenir le symbole '@' et ne doit pas contenir les caractères !, #, ou ?.
+                  </div>
+
+                            <div class="alert alert-danger"  *ngIf="mail.errors?.['minlength']" >
+                              Email  doit comporter au moins 8 caractères.
+                            </div>
+
+              </div>
+            </div>
+            <!-- numero input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example3"> Numero du telephone</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                 +216
+                </span>
+                <!-- [(ngModel)]="universite.numero"-->
+              <input type="text" id="form3Example3" class="form-control"  [(ngModel)]="universite.numero"  pattern="^[0-9]{8}$"  name="numero" [ngModel]  #numero="ngModel" required uk-icon="icon: location" placeholder="Entrez le numero de telephone"/>
+             </div>
+              <div *ngIf="numero.invalid && numero.touched" >
+
+                <div class="alert alert-danger" *ngIf="numero.errors?.['required']" >
+                  Numero de telephone est obligatoire.
+                </div>
+                <div class="alert alert-danger" *ngIf="numero.errors?.['pattern'] ">
+                  Le numéro de téléphone doit contenir exactement 8 chiffres et ne doit pas contenir les caractères !, ?, #, ou &.
+                </div>
+
+            </div>
+          </div>
+              <label for="pet-select">Ville</label>
+
+
+                <select id="itemSelect" name="itemSelect" [(ngModel)]="selectedVille" >
+
+                  <option *ngFor="let item of ville" [value]="item.idVille">{{ item.nom }}</option>
+                </select>
+<br>
+                <label class="mb-3" for="form3Example86">Images</label>
+                <input class="form-control" type="file" id="form3Example86"  #logo="ngModel" name="file" [(ngModel)]="universite.logo" accept="image/*" (change)="onFileSelected($event)" required>
+                <div *ngIf="logo.invalid && logo.touched">
+                  <div class="alert alert-danger" *ngIf="logo.errors?.['required']">
+                    Image is required.
+                  </div></div>
+                <!-- Submit button -->
+           <!--   <button type="submit" class="btn btn-primary btn-block mb-4" value="save" [disabled]="f.invalid" (click)="addUniv(f.value)" >
+                  Add
+                </button>-->
+                <div class="d-flex justify-content-start  mt-4">
+                <button type="submit" class="btn btn-primary btn-block mx-2" value="save" [disabled]="f.invalid" (click)="addUniv(f.value)"  >
+                  Ajouter
+                </button>
+                <div *ngIf="isLoading" class="spinner-border" role="status">
+    
+                </div>
+                <div   *ngIf="isLoading" class="spinner-border text-primary" role="status">
+                  
+                </div>
+                <div  *ngIf="isLoading" class="spinner-border text-secondary" role="status">
+              
+                </div>
+                <!-- Back buttons -->
+
+                <button type="submit" class="btn btn-primary  mx-2"  [routerLink]="['/universite/show/']">
+                  Retourner
+                </button>
+
+              </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</body></html>

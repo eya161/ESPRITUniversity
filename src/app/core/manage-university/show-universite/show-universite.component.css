@@ -1,0 +1,88 @@
+.background-radial-gradient {
+  background-color: hsl(0, 28%, 31%);
+  background-image: radial-gradient(650px circle at 0% 0%,
+      hsl(357, 32%, 52%) 15%,
+      hsl(0, 39%, 52%) 35%,
+      hsl(0, 74%, 44%) 75%,
+      hsl(0, 57%, 39%) 80%,
+      transparent 100%),
+    radial-gradient(1250px circle at 100% 100%,
+      hsl(0, 57%, 43%) 15%,
+      hsl(9, 94%, 40%) 35%,
+      hsl(0, 41%, 59%) 75%,
+      hsl(0, 59%, 35%) 80%,
+      transparent 100%);
+}
+.line-through-red {
+  text-decoration-line: line-through;
+  color: red;
+}
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 20px;
+  position: relative; /* Add this line for positioning */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Optional: Style the close button icon */
+.close-button i {
+  font-size: 20px;
+  color: #000;
+}
+
+
+.center-image {
+  display: block;
+  margin: 0 auto;
+}
+
+.arrow-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s ease;
+}
+
+.arrow-button:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+
+.arrow-button.left {
+  left: 1rem;
+}
+
+.arrow-button.right {
+  right: 1rem;
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- Autres balises meta et liens CSS si nécessaires -->
+</head>
+<body>
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card mt-5">
+            <div class="card-header card-header-danger text-center">
+              <h2>Mettre à jour l'université</h2>
+              <p>Veuillez remplir le formulaire suivant</p>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="updateUniversite" (ngSubmit)="editUniv()" >
+
+                <!-- University Name input -->
+                <label class="form-label" for="form3Example3">Nom de l'université
+                </label>
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example3" name="nomUniversite" class="form-control" required minlength="4" pattern="[a-zA-Z]*"
+                  uk-icon="icon: home" formControlName="nomUniversite"/>
+
+                  <div
+                  class="alert alert-danger"
+                  *ngIf="updateUniversite.get('nomUniversite')?.touched &&
+                  updateUniversite.get('nomUniversite')?.invalid &&
+                  !updateUniversite.get('nomUniversite')?.hasError('minlength')&&
+                  !updateUniversite.get('nomUniversite')?.hasError('pattern')"
+         >
+         Nom est obligatoire.
+         </div>
+         <div
+           class="alert alert-danger"
+           *ngIf="
+                  updateUniversite.get('nomUniversite')?.hasError('minlength')"
+         >
+         Nom doit comporter au moins 4 caractères.
+         </div>
+         <div class="alert alert-danger"
+         *ngIf="
+                updateUniversite.get('nomUniversite')?.hasError('pattern')">
+        Nom doit contenir uniquement des lettres.
+    </div>
+
+
+
+
+
+                </div>
+
+                <!-- Address input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3"> Adresse </label>
+                  <input type="text" id="form3Example3" class="form-control"   minlength="10" name="adresse"  required uk-icon="icon: location" formControlName="adresse"/>
+                  <div
+                  class="alert alert-danger"
+                  *ngIf="updateUniversite.get('adresse')?.touched &&
+                  updateUniversite.get('adresse')?.invalid &&
+                  !updateUniversite.get('adresse')?.hasError('minlength')"
+         >
+         L'adresse est obligatoire.
+        </div>
+         <div
+           class="alert alert-danger"
+           *ngIf="updateUniversite.get('adresse')?.touched &&
+                  updateUniversite.get('adresse')?.hasError('minlength')"
+         >
+         L'adresse doit comporter au moins 10 caractères.
+        </div>
+
+
+                </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3"> Email </label>
+                  <input
+                    type="email"
+                    id="form3Example3"
+                    class="form-control"
+                    name="mail"
+                    required
+                    uk-icon="icon: mail"
+                    formControlName="mail"
+                  />
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="updateUniversite.get('mail')?.touched &&
+                          updateUniversite.get('mail')?.invalid &&
+                          updateUniversite.get('mail')?.errors?.['required']"
+                  >
+                    L'email est obligatoire.
+                  </div>
+                  <div
+    class="alert alert-danger"
+    *ngIf="updateUniversite.get('mail')?.touched &&
+          updateUniversite.get('mail')?.hasError('pattern')"
+  >
+    L'email doit contenir le symbole '@' et ne doit pas contenir les caractères !, ?, #, ou &.
+  </div>
+                </div>
+                <!-- Numero du telephone input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3"> Numero du telephone </label>
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      +216
+                    </span>
+                    <input
+                      type="text"
+                      id="form3Example3"
+                      class="form-control"
+                      pattern="^[0-9]{8}$"
+                      name="numero"
+                      required
+                      uk-icon="icon: location"
+                      formControlName="numero"
+                      placeholder="Entrez le numero de telephone"
+                    />
+                  </div>
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="updateUniversite.get('numero')?.touched &&
+                          updateUniversite.get('numero')?.invalid &&
+                          updateUniversite.get('numero')?.errors?.['required']"
+                  >
+                    Le numéro de téléphone est obligatoire.
+                  </div>
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="updateUniversite.get('numero')?.touched &&
+                          updateUniversite.get('numero')?.invalid &&
+                          updateUniversite.get('numero')?.errors?.['pattern']"
+                  >
+                    Le numéro de téléphone doit contenir exactement 8 chiffres.
+                  </div>
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formVille">Ville {{selectedVille|json}}</label>
+                  <select
+                  id="formVille"
+                  class="form-control"
+                  name="selectedVille"
+                  formControlName="selectedVille"
+                  >
+                    <option *ngFor="let item of ville" [value]="item.idVille">{{ item.nom }}</option>
+                  </select>
+                </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example86">Images</label>
+
+
+                    <input class="form-control"  type="file" id="form3Example86"   name="logo" (change)="onFileSelected($event)" required>
+                  </div>
+                  <div class="alert alert-danger"  *ngIf="updateUniversite.get('logo')?.touched && updateUniversite.get('logo')?.invalid && updateUniversite.get('logo')?.errors?.['required']">
+                    L'image est obligatoire.
+                  </div>
+                <!-- Update button -->
+                <div class="d-flex justify-content-start mt-4">
+
+                <button type="submit" class="btn btn-primary w-20 mx-2">Update</button>
+
+                <!-- Return button -->
+                <button type="button" class="btn btn-primary w-20 mx-2" [routerLink]="['/universite/show/']">
+                  Retourner
+                </button>
+</div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,142 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Filter -->
+
+      <div class="input-group rounded">
+        <input
+          type="text"
+          class="form-control rounded"
+          placeholder=" Cherchez-vous une université ?"
+          aria-label="Search"
+          aria-describedby="search-addon"
+          [(ngModel)]="villeFilter"
+          (ngModelChange)="filterVille(villeFilter)"
+        />
+        <span class="input-group-text border-0" id="search-addon">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+
+      <br />
+<br>
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title mt-0">Liste des villes</h4>
+          </div>
+<!--<div class="container-fluid mt--7">
+     Table -->
+   <!-- <div class="row">
+      <div class="col">-->
+        <div class="card-body">
+        <!-- <div class="card shadow">
+         <div class="card-header border-0">
+            <h3 class="mb-0">Card tables</h3>
+             <table class="table align-items-center table-flush">
+
+          </div>-->
+          <button
+          type="button"
+          mat-raised-button
+          class="btn btn-primary"
+          routerLink="/ville/show/addville"
+        >
+          <i class="nav-link active">Ajouter une ville</i>
+        </button>
+          <div class="table-responsive">
+
+            <table class="table table-hover">
+              <thead class="">
+
+              <!--<thead class="thead-light">-->
+                <tr>
+               <!--   <th scope="col">Id</th>-->
+                  <th scope="col">Nom Ville</th>
+                  <th scope="col">Adresse</th>
+                  <th scope="col">nb</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr *ngFor="let v of listV ; let i = index">
+                <!-- <td>{{u.idUniversite}}</td>-->
+                 <td>{{v.nom}}</td>
+                 <td>{{v.addresse}}</td>
+
+                 <td>{{listFoyerByVille[v.idVille] || 0}}</td>
+                 <!--Bouton Modifier                   routerLink="/ville/show/update/{{v.idVille }}"            -->
+                 <td>
+                  <div class="d-flex justify-content-start mt-2">
+
+                   <button
+                  type="button"
+                  mat-raised-button
+                  class="btn btn-primary mx-2"
+                  (click)="showEditForm(v)"
+                >
+                  <i class="material-icons">edit</i>
+                </button>
+
+                 <button type="button" class="btn btn-outline-danger mx-2" (click)="deleteVille(v.idVille, i)" >
+                  Delete
+                </button>
+                  </div>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="d-flex justify-content-center">
+
+
+
+
+
+            <!--pagination-controls (pageChange)="changePage($event)" [itemsPerPage]="5" [maxSize]="5"></!--pagination-controls-->
+
+                  </div>
+
+
+      <div class="card-body" >
+        <!-- Move the app-update-ville component here -->
+
+        <app-update-ville *ngIf="editMode" [ville]="selectedVille" (changeState)="changeState()"></app-update-ville>
+      </div>
+
+
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <li class="page-item disabled">
+                  <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                    <i class="fas fa-angle-left"></i>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="javascript:void(0)">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)">
+                    <i class="fas fa-angle-right"></i>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+

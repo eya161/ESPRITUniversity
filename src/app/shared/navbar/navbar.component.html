@@ -16,9 +16,11 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                         aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(1)">Université</a>
                     <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Université</a>
+                        <a class="dropdown-item" href="/universite/show">Université</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Ville</a>
+                        <a class="dropdown-item" href="/ville/show">Ville</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLink="/filtre">Globale filtre</a>
                     </div>
                 </li>
                 <li (click)="toggleDisplayDivIf()" class="nav-item" routerLinkActive="active">
@@ -55,21 +57,21 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Chambre</a>
                     </div>
-                </li>  
+                </li>
                 <li class="nav-item ">
                     <a class="nav-link" (click)="logout()">Logout</a>
-                </li>       
+                </li>
                 <li class="nav-item offset-md-4">
                     <a class="nav-link" href="/profile">
                         <div class="avatar">
                             <img src="../../../assets/svg/user-svgrepo-com.svg" alt="User Avatar" width="30px" height="30px">
                         </div>
                     </a>
-                </li>                                                 
+                </li>
             </ul>
         </div>
         <div>
-            
+
         </div>
     </div>
 </nav>
@@ -84,7 +86,7 @@
                 </li>
                 <li class="nav-item mt-1">
                     <a class="nav-link" routerLink="#">Logout</a>
-                </li>                                            
+                </li>
             </ul>
         </div>
         <button (click)="toggleDisplayDivIf()" class="navbar-toggler" style="float: inline-end;" type="button" data-toggle="collapse" data-target="#navbarResponsive"

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- Autres balises meta et liens CSS si nécessaires -->
+</head>
+<body>
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card mt-5">
+            <div class="card-header card-header-danger text-center">
+              <h2>Mettre à jour la ville              </h2>
+              <p>Veuillez remplir le formulaire suivant</p>
+            </div>
+            <div class="card-body">
+              <form #f="ngForm">
+
+
+                <!-- University Name input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3">Nom de la ville</label>
+                  <input type="text" id="form3Example3" name="nom" class="form-control" required minlength="4" pattern="[a-zA-Z]*" [ngModel]  #nom="ngModel"placeholder="Entrez le nom de ville"
+                  uk-icon="icon: home"/>
+                  <div  *ngIf="nom.invalid && nom.touched" >
+                    <div class="alert alert-danger" *ngIf="nom.errors?.['required']" >
+                      Nom est obligatoire.
+                    </div>
+
+                              <div class="alert alert-danger" *ngIf="nom.errors?.['minlength']" >
+                                Nom doit comporter au moins 4 caractères.                                  </div>
+
+
+                              <div class="alert alert-danger" *ngIf="nom.errors?.['pattern']" >
+                                Nom doit contenir uniquement des lettres.
+                              </div>
+
+
+                </div>
+              </div>
+                <!-- Adress input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3"> Adresse </label>
+                  <input type="text" id="form3Example3" class="form-control"   minlength="10" name="addresse" [ngModel]  #addresse="ngModel" required uk-icon="icon: location" placeholder="Entrez l'adresse"/>
+                  <div *ngIf="addresse.invalid && addresse.touched" >
+
+                    <div class="alert alert-danger" *ngIf="addresse.errors?.['required']" >
+                      Adresse est obligatoire.
+                    </div>
+
+                              <div class="alert alert-danger"  *ngIf="addresse.errors?.['minlength']" >
+                                Adresse  doit comporter au moins 10 caractères.
+                              </div>
+
+                </div>
+              </div>
+
+
+
+                <!-- Submit button -->
+           <!--   <button type="submit" class="btn btn-primary btn-block mb-4" value="save" [disabled]="f.invalid" (click)="addUniv(f.value)" >
+                  Add
+                </button>-->
+                <div class="d-flex justify-content-start  mt-4">
+                <button type="submit" class="btn btn-primary btn-block mx-2" value="save" [disabled]="f.invalid" (click)="addVille(f.value)"  >
+                  Ajouter
+                </button>
+
+                <!-- Back buttons -->
+
+                <button type="submit" class="btn btn-primary  mx-2"  [routerLink]="['/ville/show/']">
+                  Retourner
+                </button>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</body></html>
+

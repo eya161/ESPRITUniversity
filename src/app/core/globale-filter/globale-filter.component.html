@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Recherche avec Bootstrap</title>
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Filtres à gauche -->
+        <div class="col-md-3">
+          <h5>Type de recherche :</h5>
+          <br>
+          <form #f="ngForm">
+            <label for="itemSelect">Recherche par ville :</label>
+            <select class="form-control" id="itemSelect" name="itemSelect" [(ngModel)]="selectedVille" (ngModelChange)="onVilleSelectChange()" required>
+              <option value="" disabled selected>Choisir ville</option>
+              <option *ngFor="let item of ville" [value]="item.idVille">{{ item.nom }}</option>
+            </select>
+            <br>
+
+            <label for="searchTypeUniv">Recherche par universite :</label>
+            <select class="form-control" id="searchTypeUniv" name="searchTypeUniv" [(ngModel)]="selectedUniv" [disabled]="univSelectDisabled" (ngModelChange)="onUnivSelectChange()" required>
+              <option value="" disabled selected>Choisir universite</option>
+              <option *ngFor="let univ of universites" [value]="univ.idUniversite">{{ univ.nomUniversite }}</option>
+            </select>
+            <br>
+
+            <label for="searchTypeDept">Recherche par departement :</label>
+            <select class="form-control" id="searchTypeDept" name="searchTypeDept" [(ngModel)]="selectedDept" [disabled]="deptSelectDisabled" (ngModelChange)="onDeptSelectChange()" required>
+              <option value="" disabled selected>Choisir departement </option>
+              <option *ngFor="let univ of departements" [value]="univ.idDepartement">{{ univ.nomDepartment }}</option>
+            </select>
+            <br>
+
+            <button class="btn btn-primary" (click)="filtrer()" [disabled]="selectedVille == undefined">Filtrer</button>
+            <button class="btn btn-primary" (click)="annuler()" >annuler</button>
+
+          </form>
+
+        </div>
+
+        <!-- Tableau à droite -->
+        <div class="col-md-9">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Ville</th>
+                        <th>Nom de université </th>
+                        <th>Nom de département</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="filtrers.length>0" id="resultTableBody">
+                  <tr  *ngFor="let f of filtrers" >
+                    <!-- <td>{{u.idUniversite}}</td>-->
+                   
+                     <td>{{f.nom}}</td>
+                     <td>{{f.nomUniversite}}</td>
+                     <td>{{f.nomDepartement}}</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+    function performSearch() {
+        // Récupérer le type de recherche et le critère de recherche
+        var searchType = document.getElementById('searchType').value;
+        var searchCriteria = document.getElementById('searchInput').value;
+
+        // Effectuer la recherche (cette partie devrait être remplacée par votre logique de recherche côté serveur)
+        var results = performServerSearch(searchType, searchCriteria);
+
+        // Afficher les résultats dans le tableau
+        displayResults(results);
+    }
+
+    function performServerSearch(type, criteria) {
+        // Effectuez ici votre logique de recherche côté serveur et renvoyez les résultats
+        // Remplacez cette fonction avec votre propre implémentation
+        // Cette fonction pourrait utiliser Angular HttpClient pour appeler une API backend, par exemple
+        console.log('Type de recherche:', type);
+        console.log('Critère de recherche:', criteria);
+
+        // Pour cet exemple, je renvoie une liste statique de résultats
+        return [
+            { ville: 'Ville 1', universiteId: '123', nomDepartement: 'Informatique' },
+            { ville: 'Ville 2', universiteId: '456', nomDepartement: 'Mathématiques' },
+            // ... autres résultats
+        ];
+    }
+
+    function displayResults(results) {
+        // Effacer le contenu actuel du tableau
+        document.getElementById('resultTableBody').innerHTML = '';
+
+        // Ajouter les résultats au tableau
+        results.forEach(function(result) {
+            var row = document.createElement('tr');
+            row.innerHTML = '<td>' + result.ville + '</td><td>' + result.universiteId + '</td><td>' + result.nomDepartement + '</td>';
+            document.getElementById('resultTableBody').appendChild(row);
+        });
+    }
+</script>
+
+</body>
+</html>

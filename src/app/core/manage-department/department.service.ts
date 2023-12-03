@@ -6,13 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class DepartmentService {
   constructor(private http:HttpClient) { }
-  
+
   getAllDepartments(){
     return this.http.get("http://localhost:8082/Department/department");
   }
 
   getAllUniversity(){
-    return this.http.get("http://localhost:8082/Universite/university");
+    return this.http.get("http://localhost:8082/Universite/universite");
   }
 
   addDepartment(data:any,id:any){

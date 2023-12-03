@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar'; 
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input'; 
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -38,12 +38,19 @@ import { AddClasseComponent } from './core/manage-classe/add-classe/add-classe.c
 import { EditClasseComponent } from './core/manage-classe/edit-classe/edit-classe.component';
 import { ListClasseComponent } from './core/manage-classe/list-classe/list-classe.component';
 import { DetailsClasseComponent } from './core/manage-classe/details-classe/details-classe.component';
-
+import { DeleteUniversiteComponent } from './core/manage-university/delete-universite/delete-universite.component';
+import { ShowUniversiteComponent } from './core/manage-university/show-universite/show-universite.component';
+import { UpdateUniversiteComponent } from './core/manage-university/update-universite/update-universite.component';
+import { AddVilleComponent } from './core/manage-ville/add-ville/add-ville.component';
+import { DeleteVilleComponent } from './core/manage-ville/delete-ville/delete-ville.component';
+import { ShowVilleleComponent } from './core/manage-ville/show-villele/show-villele.component';
+import { UpdateVilleComponent } from './core/manage-ville/update-ville/update-ville.component';
+import { GlobaleFilterComponent } from './core/globale-filter/globale-filter.component';
+import { UniversiteModule } from './core/manage-university/universite/universite.module';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    AddUniversiteComponent,
     AddFoyerComponent,
     UpdateFoyerComponent,
     DeleteFoyerComponent,
@@ -67,22 +74,24 @@ import { DetailsClasseComponent } from './core/manage-classe/details-classe/deta
     EditClasseComponent,
     ListClasseComponent,
     DetailsClasseComponent,
-    
+    GlobaleFilterComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,  
+    FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
     NgxPaginationModule,
     MatButtonModule,
-    MatFormFieldModule, 
+    MatFormFieldModule,
     MatInputModule,
-    UserModule 
-
+    UserModule ,
+    UniversiteModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
