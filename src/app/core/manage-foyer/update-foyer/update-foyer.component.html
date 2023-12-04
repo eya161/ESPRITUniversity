@@ -1,1 +1,76 @@
-<p>update-foyer works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card mt-5">
+            <div class="card-header card-header-danger text-center">
+              <h2>Mettre à jour foyer</h2>
+              <p>Veuillez remplir le formulaire suivant</p>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="updateFoyer" (ngSubmit)="editFoyer()">
+
+                <label class="form-label" for="form3Example3">Nom de foyer</label>
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example3" name="nomFoyer" class="form-control" required minlength="4"
+                    pattern="[a-zA-Z]*" uk-icon="icon: home" formControlName="nomFoyer" />
+
+                  <div class="alert alert-danger"
+                    *ngIf="updateFoyer.get('nomFoyer')?.touched && updateFoyer.get('nomFoyer')?.invalid &&
+                  !updateFoyer.get('nomFoyer')?.hasError('minlength')&& !updateFoyer.get('nomFoyer')?.hasError('pattern')">
+                    Nom est obligatoire.
+                  </div>
+                  <div class="alert alert-danger" *ngIf="
+                  updateFoyer.get('nomFoyer')?.hasError('minlength')">
+                    Nom doit comporter au moins 4 caractères.
+                  </div>
+                  <div class="alert alert-danger" *ngIf="
+                updateFoyer.get('nomFoyer')?.hasError('pattern')">
+                    Nom doit contenir uniquement des lettres.
+                  </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3"> capacite </label>
+                  <input type="text" id="form3Example3" class="form-control" minlength="2" name="capaciteFoyer"
+                    required uk-icon="icon: location" formControlName="capaciteFoyer" />
+                  <div class="alert alert-danger" *ngIf="updateFoyer.get('capaciteFoyer')?.touched &&
+                  updateFoyer.get('capaciteFoyer')?.invalid && !updateFoyer.get('capaciteFoyer')?.hasError('minlength')">
+                    La capacity est obligatoire.
+                  </div>
+                  <div class="alert alert-danger" *ngIf="updateFoyer.get('capaciteFoyer')?.touched &&
+                  updateFoyer.get('capaciteFoyer')?.hasError('minlength')">
+                    La capacity doit comporter au moins 2 caractères.
+                  </div>
+                </div>
+                
+                <div class="d-flex justify-content-start mt-4">
+
+                  <button type="submit" class="btn btn-primary w-20 mx-2">Update</button>
+
+                  <button type="button" class="btn btn-primary w-20 mx-2" [routerLink]="['/foyer/show/']">
+                    Retourner
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

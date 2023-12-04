@@ -10,10 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { AddUniversiteComponent } from './core/manage-university/add-universite/add-universite.component';
-import { AddFoyerComponent } from './core/manage-foyer/add-foyer/add-foyer.component';
-import { UpdateFoyerComponent } from './core/manage-foyer/update-foyer/update-foyer.component';
-import { DeleteFoyerComponent } from './core/manage-foyer/delete-foyer/delete-foyer.component';
-import { ListFoyerComponent } from './core/manage-foyer/list-foyer/list-foyer.component';
 import { LoginComponent } from './core/manage-user/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -49,14 +45,12 @@ import { GlobaleFilterComponent } from './core/globale-filter/globale-filter.com
 import { UniversiteModule } from './core/manage-university/universite/universite.module';
 import { ProjetModule } from './core/manage-projet/projet/projet/projet.module';
 import { DetailProjetModule } from './core/manage-DetailProjet/detailProjet/detail-projet/detail-projet.module';
+import { ZoomRowDirectiveDirective } from './core/manage-foyer/zoom-row-directive.directive';
+import { SpecialDirectiveActionDirectiveDirective } from './special-directive-action-directive.directive';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    AddFoyerComponent,
-    UpdateFoyerComponent,
-    DeleteFoyerComponent,
-    ListFoyerComponent,
     LoginComponent,
     SignupComponent,
     ForgetPasswordEmailInterfaceComponent,
@@ -77,6 +71,8 @@ import { DetailProjetModule } from './core/manage-DetailProjet/detailProjet/deta
     ListClasseComponent,
     DetailsClasseComponent,
     GlobaleFilterComponent,
+    ZoomRowDirectiveDirective,
+    SpecialDirectiveActionDirectiveDirective,
   ],
   imports: [
     BrowserModule,

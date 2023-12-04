@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { VilleService } from '../manage-ville/ville.service';
 import { UniversiteService } from '../manage-university/universite.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-globale-filter',
   templateUrl: './globale-filter.component.html',
-  styleUrls: ['./globale-filter.component.css']
+  styleUrls: ['./globale-filter.component.css'],
+  animations: [
+    trigger('spin', [
+      state('spin', style({ transform: 'rotate(360deg)' })),
+      transition('* => spin', animate('1000ms linear')),
+    ]),
+  ],
 })
+
 export class GlobaleFilterComponent implements OnInit {
 
   ville:any;

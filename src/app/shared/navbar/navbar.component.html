@@ -51,9 +51,9 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                         aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(4)">Foyer</a>
                     <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Foyer</a>
+                        <a class="dropdown-item" [routerLink]="['/foyer/show/']">Foyer</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Bloc</a>
+                        <a class="dropdown-item" [routerLink]="['/bloc/show/']">Bloc</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Chambre</a>
                     </div>

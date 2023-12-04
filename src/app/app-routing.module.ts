@@ -77,6 +77,9 @@ const routes: Routes = [
         (m) => m.UniversiteModule
       ),
   },
+  { path: 'foyer', loadChildren: () => import('../app/core/manage-foyer/foyers/foyers.module').then((m) => m.FoyersModule) },
+  { path: 'bloc', loadChildren: () => import('../app/core/manage-bloc/blocs/blocs/blocs.module').then((m) => m.BlocsModule) },
+ 
   {
     path: 'ville',
     loadChildren: () =>

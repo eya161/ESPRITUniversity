@@ -1,1 +1,85 @@
-<p>list-foyer works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Filter -->
+  
+        <div class="input-group rounded">
+          <input type="text" class="form-control rounded" placeholder=" Cherchez-vous une foyer ?" aria-label="Search"
+            aria-describedby="search-addon" [(ngModel)]="foyerFilter" (ngModelChange)="filterFoyer(foyerFilter)" />
+          <span class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search"></i>
+          </span>
+        </div>
+  
+        <br />
+        <br>
+        <div class="col-md-12">
+          <div class="card card-plain">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title mt-0">Liste des foyers</h4>
+            </div>
+  
+            <div class="card-body">
+              <div class="button-container">
+              <button type="button" mat-raised-button class="btn btn-primary mx-2" routerLink="/foyer/show/addfoyer">
+                <i class="nav-link active">Ajouter une foyer</i>
+              </button>
+              <a href="http://localhost:8082/Foyer/export-to-excel" class="btn btn-primary">Download the Excel File</a>
+            </div>
+              <div class="table-responsive">
+  
+                <table class="table table-hover">
+                  <thead class="">
+  
+                    <tr>
+                      <th></th><th></th>
+                      <th scope="col">Nom foyer</th>
+                      <th scope="col">capacity</th>
+                     <!-- <th scope="col">image</th>-->
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+  
+                  <tbody>
+                    <tr *ngFor="let u of listF | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index" appZoomRowDirective>
+  <td></td>  <td></td>
+                      <td>{{u.nomFoyer}}</td>
+                      <td>{{u.capaciteFoyer}}</td>
+  
+                     <!-- <td><img [src]="test + u.image"  style="max-width: 59px; max-height: 50px;" appZoomImage>
+                      </td>-->
+                     
+                      <!--Bouton Modifier-->
+                      <td> <button type="button" mat-raised-button class="btn btn-primary"
+                          routerLink="/foyer/show/updateFoyer/{{u.idFoyer }}">
+                          <i class="material-icons">edit</i>
+                        </button>
+  
+                        <button type="button" class="btn btn-outline-danger" (click)="deleteFoyer(u.idFoyer, i)">
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+  
+  
+                </table>
+  
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                <!--<div style="display: inline-block; align-items: center;" *ngIf="nomFoyer=='' ">
+                  <pagination-controls 
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  (pageChange)="onTableDataChange($event)"></pagination-controls>
+                  <select (change)="onTableSizeChange($event)" class="form-select" aria-label="Disabled select example" >
+                    <option *ngFor="let size of tablesSizes">{{size}}</option>
+                  </select>
+                </div>-->
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    
