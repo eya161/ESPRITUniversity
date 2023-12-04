@@ -47,6 +47,8 @@ import { ShowVilleleComponent } from './core/manage-ville/show-villele/show-vill
 import { UpdateVilleComponent } from './core/manage-ville/update-ville/update-ville.component';
 import { GlobaleFilterComponent } from './core/globale-filter/globale-filter.component';
 import { UniversiteModule } from './core/manage-university/universite/universite.module';
+import { ProjetModule } from './core/manage-projet/projet/projet/projet.module';
+import { DetailProjetModule } from './core/manage-DetailProjet/detailProjet/detail-projet/detail-projet.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +77,6 @@ import { UniversiteModule } from './core/manage-university/universite/universite
     ListClasseComponent,
     DetailsClasseComponent,
     GlobaleFilterComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -89,11 +90,13 @@ import { UniversiteModule } from './core/manage-university/universite/universite
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    UserModule ,
+    UserModule,
     UniversiteModule,
     NgxPaginationModule,
+    ProjetModule,
+    DetailProjetModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

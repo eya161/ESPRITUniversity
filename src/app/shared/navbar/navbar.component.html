@@ -16,9 +16,9 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                         aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(1)">Université</a>
                     <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/universite/show">Université</a>
+                        <a class="dropdown-item" routerLink="/universite/show">Université</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/ville/show">Ville</a>
+                        <a class="dropdown-item" routerLink="/ville/show">Ville</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" routerLink="/filtre">Globale filtre</a>
                     </div>
@@ -42,9 +42,9 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                         aria-haspopup="true" aria-expanded="false" (click)="toggleDropdown(3)">Projet</a>
                     <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Projet</a>
+                        <a class="dropdown-item"  routerLink="/projet/show">Projet</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Détails Projet</a>
+                        <a class="dropdown-item"  routerLink="/detail/show">Détails Projet</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown" [ngClass]="{ show: isDropdownOpen4 }">

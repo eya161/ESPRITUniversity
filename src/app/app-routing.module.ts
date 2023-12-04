@@ -11,37 +11,84 @@ import { GlobaleFilterComponent } from './core/globale-filter/globale-filter.com
 
 const routes: Routes = [
   {
-    path:'',redirectTo:'login',pathMatch:'full'
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
   },
   {
-    path:'login',component:LoginComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path:'signup',component:SignupComponent
+    path: 'signup',
+    component: SignupComponent,
   },
   {
-    path:'forgetPasswordEmail',component:ForgetPasswordEmailInterfaceComponent
+    path: 'forgetPasswordEmail',
+    component: ForgetPasswordEmailInterfaceComponent,
   },
   {
-    path:'register/reset-password',component:ForgetPasswordInterfaceComponent
+    path: 'register/reset-password',
+    component: ForgetPasswordInterfaceComponent,
   },
   {
-    path:'profile',component:ProfileComponent
+    path: 'profile',
+    component: ProfileComponent,
   },
   {
-    path: 'user', loadChildren: () => import('../app/core/manage-user/user/user.module').then((m) => m.UserModule)
+    path: 'user',
+    loadChildren: () =>
+      import('../app/core/manage-user/user/user.module').then(
+        (m) => m.UserModule
+      ),
   },
-  {path:'lazyDep',loadChildren:()=>import('../app/core/manage-department/department/department.module').then(m=>m.DepartmentModule)},
-  {path:'lazyCla',loadChildren:()=>import('../app/core/manage-classe/classe/classe.module').then(m=>m.ClasseModule)},
-  
-  {path:"universite",loadChildren:()=>import('../app/core/manage-university/universite/universite.module').then((m)=>m.UniversiteModule)},
-  {path:"ville",loadChildren:()=>import('../app/core/manage-ville/ville/ville.module').then((m)=>m.VilleModule)},
-{path:"filtre",component:GlobaleFilterComponent},
   {
-      path:'**',component:NotFoundComponent
-  }
-
-
+    path: 'lazyDep',
+    loadChildren: () =>
+      import('../app/core/manage-department/department/department.module').then(
+        (m) => m.DepartmentModule
+      ),
+  },
+  {
+    path: 'lazyCla',
+    loadChildren: () =>
+      import('../app/core/manage-classe/classe/classe.module').then(
+        (m) => m.ClasseModule
+      ),
+  },
+  {
+    path: 'projet',
+    loadChildren: () =>
+      import('../app/core/manage-projet/projet/projet/projet.module').then(
+        (m) => m.ProjetModule
+      ),
+  },
+  {
+    path: 'detail',
+    loadChildren: () =>
+      import(
+        '../app/core/manage-DetailProjet/detailProjet/detail-projet/detail-projet.module'
+      ).then((m) => m.DetailProjetModule),
+  },
+  {
+    path: 'universite',
+    loadChildren: () =>
+      import('../app/core/manage-university/universite/universite.module').then(
+        (m) => m.UniversiteModule
+      ),
+  },
+  {
+    path: 'ville',
+    loadChildren: () =>
+      import('../app/core/manage-ville/ville/ville.module').then(
+        (m) => m.VilleModule
+      ),
+  },
+  { path: 'filtre', component: GlobaleFilterComponent },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({

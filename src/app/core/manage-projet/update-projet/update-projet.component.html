@@ -1,0 +1,104 @@
+<!-- update-projet.component.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- Autres balises meta et liens CSS si nécessaires -->
+</head>
+<body>
+  <div class="main-content">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card mt-5">
+          <div class="card-header card-header-danger text-center">
+            <h2>Mettre à jour le projet</h2>
+            <p>Veuillez remplir le formulaire suivant</p>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="updateProjet" (ngSubmit)="editProjet()">
+              <!-- Nom Projet input -->
+              <div class="mb-4">
+                <label for="nomProjet" class="form-label">Nom du Projet</label>
+                <input
+                  id="nomProjet"
+                  name="nomProjet"
+                  class="form-control"
+                  formControlName="nomProjet"
+                  required
+                  pattern="[a-zA-Z]{3,}"
+                  title="Le nom du projet doit contenir au moins 3 lettres et ne doit pas contenir de chiffres."
+                />
+                <div *ngIf="updateProjet.get('nomProjet')!.hasError('required') && updateProjet.get('nomProjet')!.touched">
+                  <small class="text-danger">Nom du projet est obligatoire.</small>
+                </div>
+                <div *ngIf="updateProjet.get('nomProjet')!.hasError('pattern') && updateProjet.get('nomProjet')!.touched">
+                  <small class="text-danger">Le nom du projet doit contenir au moins 3 lettres et ne doit pas contenir de chiffres.</small>
+                </div>
+              </div>
+
+              <!-- Durée Projet input -->
+              <div class="mb-4">
+                <label for="dureProjet" class="form-label">Durée du Projet</label>
+                <input
+                  id="dureProjet"
+                  name="dureProjet"
+                  class="form-control"
+                  formControlName="dureProjet"
+                  required
+                />
+                <div *ngIf="updateProjet.get('dureProjet')!.hasError('required') && updateProjet.get('dureProjet')!.touched">
+                  <small class="text-danger">Durée du projet est obligatoire.</small>
+                </div>
+              </div>
+
+              <!-- Type Projet input -->
+              <div class="mb-4">
+                <label for="typeProjet" class="form-label">Type du Projet</label>
+                <select id="typeProjet" name="typeProjet" class="form-control" formControlName="typeProjet" required>
+                  <option value="PFE">PFE</option>
+                  <option value="PIDEV">PIDEV</option>
+                  <option value="PFA">PFA</option>
+                </select>
+                <div *ngIf="updateProjet.get('typeProjet')!.hasError('required') && updateProjet.get('typeProjet')!.touched">
+                  <small class="text-danger">Type du projet est obligatoire.</small>
+                </div>
+              </div>
+
+              <!-- Date Debut Projet input -->
+              <div class="mb-4">
+                <label for="dateDebutP" class="form-label">Date de début du Projet</label>
+                <input
+                  type="date"
+                  id="dateDebutP"
+                  name="dateDebutP"
+                  class="form-control"
+                  formControlName="dateDebutP"
+                  required
+                />
+                <div *ngIf="updateProjet.get('dateDebutP')!.hasError('required') && updateProjet.get('dateDebutP')!.touched">
+                  <small class="text-danger">Date de début du projet est obligatoire.</small>
+                </div>
+              </div>
+
+              <!-- Update button -->
+              <div class="d-flex justify-content-start mt-4">
+                <button type="submit" class="btn btn-primary mx-2">Update</button>
+
+                <!-- Return button -->
+                <button type="button" class="btn btn-primary mx-2" [routerLink]="['/projet/show/']">
+                  Retourner
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

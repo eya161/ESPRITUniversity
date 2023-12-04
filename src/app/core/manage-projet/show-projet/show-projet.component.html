@@ -1,0 +1,93 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Filter -->
+      <div class="input-group rounded">
+        <input
+          type="text"
+          class="form-control rounded"
+          placeholder=" Cherchez-vous un projet ?"
+          aria-label="Search"
+          aria-describedby="search-addon"
+          [(ngModel)]="ProjetFilter"
+          (keyup.enter)="filterProjet()" 
+        />
+        <span class="input-group-text border-0" id="search-addon" (click)="filterProjet()">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title mt-0">Liste des Projets</h4>
+        </div>
+        <input type="text" id="search" placeholder="Rechercher..." [(ngModel)]="nomProjet" />
+        <div class="card-body">
+          <button
+            type="button"
+            mat-raised-button
+            class="btn btn-primary"
+            routerLink="/projet/show/addprojet"
+          >
+            <i class="material-icons"></i> Ajouter un projet
+          </button>
+
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Nom Projet</th>
+                  <th scope="col">Durée Projet</th>
+                  <th scope="col">Type Projet</th>
+                  <th scope="col">Date Début Projet</th>
+              
+                  <th scope="col">technologie</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let projet of listU| paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index">
+                  <td>{{projet.nomProjet}}</td>
+                  <td>{{projet.dureProjet}}</td>
+                  <td>{{projet.typeProjet}}</td>
+                  <td>{{projet.dateDebutP | date:'shortDate'}}</td>
+                
+                  <td>{{projet.detailProjet?.technologie}}</td>
+               
+                  <td>
+                    <button
+                      type="button"
+                      mat-raised-button
+                      class="btn btn-primary"
+                      routerLink="/projet/show/update/{{projet.idProjet}}"
+                    >
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger"
+                      (click)="deleteProjet(projet.idProjet, i)"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+<div class="d-flex justify-content-center">
+          </div>
+</div>
+          <div class="card-footer py-4">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

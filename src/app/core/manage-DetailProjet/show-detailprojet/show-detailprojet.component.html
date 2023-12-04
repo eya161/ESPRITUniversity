@@ -1,0 +1,92 @@
+<div class="main-content" appHoverHighlight>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Filter -->
+      <div class="input-group rounded">
+       <input
+  type="text"
+  class="form-control rounded"
+  placeholder=" Cherchez-vous un détail de projet ?"
+  aria-label="Search"
+  aria-describedby="search-addon"
+  [(ngModel)]="searchString"
+  (ngModelChange)="filterDetails()"
+/>
+        <span class="input-group-text border-0" id="search-addon">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+
+      <br />
+
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title mt-0">Liste des Détails de Projets</h4>
+          </div>
+          <div class="card-body">
+            <button
+              type="button"
+              mat-raised-button
+              class="btn btn-primary"
+              routerLink="/detail/show/add"
+            >
+              <i class="material-icons"></i> Ajouter un détail de projet
+            </button>
+
+            <div class="table-responsive">
+  <table class="table table-hover" >
+    <thead class="thead-light">
+      <tr>
+<th scope="col"  appChangeColorOnHover >Description du Détail</th>
+        <th scope="col">Technologie</th>
+         <th scope="col">Projet</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+<tr *ngFor="let detailProjet of listU; let i = index" class="hideable-row">
+        <td>{{ detailProjet.descriptionDetail }}</td>
+        <td>{{ detailProjet.technologie }}</td>
+         <td>{{ detailProjet.idProjet }}</td>
+        <td>
+          <button
+            type="button"
+            mat-raised-button
+            class="btn btn-primary"
+            routerLink="/detail/show/update/{{ detailProjet.idDetail }}"
+          >
+            <i class="material-icons" >edit</i> Modifier
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="deleteDetail(detailProjet.idDetail, i)"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+            <button class="btn btn-primary" (click)="pdf()" >Export PDF</button>
+
+</div>
+
+
+
+
+            <div class="card-footer py-4">
+              <nav aria-label="...">
+                <ul class="pagination justify-content-end mb-0">
+                  <!-- Pagination buttons here -->
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
